@@ -1,5 +1,3 @@
-'use strict';
-
 /*
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -11,20 +9,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 /* global CustomEvent, Polymer */
 
-(function (document) {
+(function(document) {
   'use strict';
 
   // Grab a reference to our auto-binding template
   // and give it some initial binding values
   // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
-
-  var app = document.getElementById('app');
+  let app = document.getElementById('app');
 
   // Debug mode
   app.debug = true;
 
   // Logger for debug mode
-  var logger = function logger(text) {
+  let logger = text => {
     if (app.debug) {
       console.info(text);
     }
@@ -33,7 +30,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // Conditionally load the webcomponents polyfill if needed by the browser.
   // This feature detect will need to change over time as browsers implement
   // different features.
-  var webComponentsSupported = 'registerElement' in document && 'import' in document.createElement('link') && 'content' in document.createElement('template');
+  var webComponentsSupported = ('registerElement' in document &&
+    'import' in document.createElement('link') &&
+    'content' in document.createElement('template'));
 
   function finishLazyLoading() {
     // (Optional) Use native Shadow DOM if it's available in the browser.
@@ -43,9 +42,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     // window.Polymer = window.Polymer || {dom: 'shadow'};
 
     // When base-bundle.html with elements is loaded
-    var onImportLoaded = function onImportLoaded() {
+    var onImportLoaded = function() {
       logger('Imports are loaded and elements have been registered!');
-
+      
       // Remove skeleton
       var skeleton = document.getElementById('skeleton');
       skeleton.remove();
@@ -53,7 +52,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       if (webComponentsSupported) {
         // Emulate WebComponentsReady event for browsers supporting Web Components natively
         // (Chrome, Opera, Vivaldi)
-        document.dispatchEvent(new CustomEvent('WebComponentsReady', { bubbles: true }));
+        document.dispatchEvent(
+          new CustomEvent('WebComponentsReady', {bubbles: true})
+        );
       }
     };
 
@@ -83,23 +84,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   // Listen for template bound event to know when bindings
   // have resolved and content has been stamped to the page
-  app.addEventListener('dom-change', function () {
+  app.addEventListener('dom-change', () => {
     logger('Our app is ready to rock!');
   });
 
   // See https://github.com/Polymer/polymer/issues/1381
-  window.addEventListener('WebComponentsReady', function () {
+  window.addEventListener('WebComponentsReady', () => {
     /* imports are loaded and elements have been registered */
   });
 
-  window.addEventListener('service-worker-error', function (e) {
+  window.addEventListener('service-worker-error', e => {
     // Check to make sure caching is actually enabled—it won't be in the dev environment.
     if (!Polymer.dom(document).querySelector('platinum-sw-cache').disabled) {
       logger(e.detail);
     }
   });
 
-  window.addEventListener('service-worker-installed', function () {
+  window.addEventListener('service-worker-installed', () => {
     // Check to make sure caching is actually enabled—it won't be in the dev environment.
     if (!Polymer.dom(document).querySelector('platinum-sw-cache').disabled) {
       app.$.infoToast.text = 'Caching complete! This app will work offline.';
@@ -107,7 +108,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   });
 
-  window.addEventListener('service-worker-updated', function (e) {
+  window.addEventListener('service-worker-updated', e => {
     // Check to make sure caching is actually enabled—it won't be in the dev environment.
     if (!Polymer.dom(document).querySelector('platinum-sw-cache').disabled) {
       logger(e.detail);
@@ -118,15 +119,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // the headerTitle in the middle-container and the bottom title in the bottom-container.
   // The headerTitle is moved to top and shrunk on condensing. The bottom sub title
   // is shrunk to nothing on condensing.
-  window.addEventListener('paper-header-transform', function (e) {
-    var headerTitle = app.querySelector('.Main-headerTitle');
-    var headerSubTitle = app.querySelector('.Main-headerSubTitle');
-    var headerMiddleBar = app.querySelector('.Main-headerMiddleBar');
-    var headerBottomBar = app.querySelector('.Main-headerBottomBar');
-    var detail = e.detail;
-    var heightDiff = detail.height - detail.condensedHeight;
-    var yRatio = Math.min(1, detail.y / heightDiff);
-    var yRatio2 = Math.min(1, detail.y / (heightDiff + 30));
+  window.addEventListener('paper-header-transform', e => {
+    let headerTitle = app.querySelector('.Main-headerTitle');
+    let headerSubTitle = app.querySelector('.Main-headerSubTitle');
+    let headerMiddleBar = app.querySelector('.Main-headerMiddleBar');
+    let headerBottomBar = app.querySelector('.Main-headerBottomBar');
+    let detail = e.detail;
+    let heightDiff = detail.height - detail.condensedHeight;
+    let yRatio = Math.min(1, detail.y / heightDiff);
+    let yRatio2 = Math.min(1, detail.y / (heightDiff + 30));
     // headerTitle max size when condensed. The smaller the number the smaller the condensed size.
     var maxMiddleScale = 0.70;
     var auxHeight = heightDiff - detail.y;
@@ -136,16 +137,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     // Move/translate headerMiddleContent and headerBottomContent
     if (window.matchMedia('(min-width: 600px)').matches) {
-      Polymer.Base.transform('translate3d(0,' + yRatio2 * 100 + '%,0)', headerMiddleBar);
+      Polymer.Base.transform(`translate3d(0,${yRatio2 * 100}%,0)`, headerMiddleBar);
     } else {
-      Polymer.Base.transform('translate3d(' + yRatio * 18 + 'px,' + yRatio2 * 100 + '%,0)', headerMiddleBar);
-      Polymer.Base.transform('translate3d(' + yRatio * 18 + 'px,0,0)', headerBottomBar);
+      Polymer.Base.transform(`translate3d(${yRatio * 18}px,${yRatio2 * 100}%,0)`,
+        headerMiddleBar);
+      Polymer.Base.transform(`translate3d(${yRatio * 18}px,0,0)`, headerBottomBar);
     }
 
     // Scale headerTitle
-    Polymer.Base.transform('scale(' + scaleMiddle + ') translateZ(0)', headerTitle);
+    Polymer.Base.transform(`scale(${scaleMiddle}) translateZ(0)`, headerTitle);
     // Scale headerSubTitle
-    Polymer.Base.transform('scale(' + scaleBottom + ') translateZ(0)', headerSubTitle);
+    Polymer.Base.transform(`scale(${scaleBottom}) translateZ(0)`, headerSubTitle);
   });
+
 })(document);
-//# sourceMappingURL=app.js.map
