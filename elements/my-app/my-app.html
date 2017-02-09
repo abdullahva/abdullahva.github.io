@@ -11,7 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <!-- App Theme -->
-<link rel="import" href="../../themes/{$ appTheme $}/theme.html">
+<link rel="import" href="../../themes/default-theme/theme.html">
 
 <!-- Iron elements -->
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -41,17 +41,784 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <template>
     <style include="shared-styles">
-      @import "theme.css";
+      /*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+/*
+Polymer includes a shim for CSS Custom Properties that we can use for application theming.
+Below, you'll find the default palette for the Polymer Starter Kit Plus layout. Feel free to play
+with changing the colors used or generate your own palette of colours at MaterialPalette.com.
+
+See https://www.polymer-project.org/1.0/docs/devguide/styling.html#xscope-styling-details
+for further information on custom CSS properties.
+*/
+
+/* Material Design Style
+   http://www.google.com/design/spec/style/color.html */
+
+:root {
+  /* Material Design Themes
+     https://www.google.com/design/spec/style/color.html#color-themes */
+
+  /* Light theme */
+  --light-theme-primary-background-color: var(--paper-grey-50);     /* Content background */
+  --light-theme-secondary-background-color: var(--paper-grey-100);  /* Main / Drawer background */
+  --light-theme-tertiary-background-color: #fff;                    /* Cards / Dialogs background */
+  --light-theme-primary-text-color: rgba(0, 0, 0, 0.87);
+  --light-theme-secondary-text-color: rgba(0, 0, 0, 0.54);          /* Secondary text / Icons */
+  --light-theme-disabled-text-color: rgba(0, 0, 0, 0.38);           /* Disabled / Hint text */
+  --light-theme-divider-color: rgba(0, 0, 0, 0.12);
+
+  /* Dark theme */
+  --dark-theme-primary-background-color: #303030;                   /* Content background */
+  --dark-theme-secondary-background-color: var(--paper-grey-900);   /* Main / Drawer background */
+  --dark-theme-tertiary-background-color: var(--paper-grey-800);    /* Cards / Dialogs background */
+  --dark-theme-primary-text-color: rgba(255, 255, 255, 0.9);
+  --dark-theme-secondary-text-color: rgba(255, 255, 255, 0.7);      /* Secondary text / Icons */
+  --dark-theme-disabled-text-color: rgba(255, 255, 255, 0.3);       /* Disabled / Hint text */
+  --dark-theme-divider-color: rgba(255, 255, 255, 0.12);
+
+  /* Colors */
+  --primary-background-color: var(--light-theme-primary-background-color);
+  --secondary-background-color: var(--light-theme-secondary-background-color);
+  --tertiary-background-color: var(--light-theme-tertiary-background-color);
+  --primary-text-color: var(--light-theme-primary-text-color);
+  --secondary-text-color: var(--light-theme-secondary-text-color);
+  --disabled-text-color: var(--light-theme-disabled-text-color);
+  --divider-color: var(--light-theme-divider-color);
+  --error-color: var(--paper-deep-orange-a700);                     /* User input errors */
+
+  /* Primary colors */
+  --primary-color: var(--paper-indigo-500);            /* Header bar */
+  --light-primary-color: var(--paper-indigo-100);
+  --dark-primary-color: var(--paper-indigo-700);
+  --text-primary-color: #fff;                                       /* Text / Icons */
+  --text-light-primary-color: var(--paper-grey-900);
+  --text-dark-primary-color: #fff;
+
+  /* Accent colors */
+  --accent-color: var(--paper-pink-a200);             /* Focus / Links / Switches */
+  --light-accent-color: var(--paper-pink-a100);
+  --dark-accent-color: var(--paper-pink-a400);
+  --darker-accent-color: var(--paper-pink-a700);
+  --text-accent-color: #fff;                                        /* Text / Icons */
+  --text-light-accent-color: var(--paper-grey-900);
+  --text-dark-accent-color: #fff;
+
+  /* Toggle button colors
+     https://www.google.com/design/spec/components/selection-controls.html#selection-controls-switch */
+  --light-theme-toggle-unchecked-bar-color: #000;
+  --light-theme-toggle-unchecked-button-color: var(--paper-grey-50);
+  --light-theme-toggle-unchecked-ink-color: var(--paper-grey-700);
+  --light-theme-toggle-checked-bar-color: var(--accent-color);
+  --light-theme-toggle-checked-button-color: var(--accent-color);
+  --light-theme-toggle-checked-ink-color: var(--dark-accent-color);
+  
+  --dark-theme-toggle-unchecked-bar-color: var(--paper-grey-400);
+  --dark-theme-toggle-unchecked-button-color: var(--paper-grey-400);
+  --dark-theme-toggle-unchecked-ink-color: var(--paper-grey-50);
+  --dark-theme-toggle-checked-bar-color: var(--light-accent-color);
+  --dark-theme-toggle-checked-button-color: var(--light-accent-color);
+  --dark-theme-toggle-checked-ink-color: var(--light-accent-color);
+  
+  --toggle-unchecked-bar-color: var(--light-theme-toggle-unchecked-bar-color);
+  --toggle-unchecked-button-color: var(--light-theme-toggle-unchecked-button-color);
+  --toggle-unchecked-ink-color: var(--light-theme-toggle-unchecked-ink-color);
+  --toggle-checked-bar-color: var(--light-theme-toggle-checked-bar-color);
+  --toggle-checked-button-color: var(--light-theme-toggle-checked-button-color);
+  --toggle-checked-ink-color: var(--light-theme-toggle-checked-ink-color);
+
+  /* Deprecated values because of their confusing names.
+     https://github.com/PolymerElements/paper-styles/blob/master/default-theme.html */
+  --default-primary-color: var(--primary-color);
+}
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+/*
+Material Design Adaptive UI Breakpoints
+http://www.google.com/design/spec/layout/adaptive-ui.html#adaptive-ui-breakpoints
+
+Following SUIT CSS naming conventions
+https://github.com/suitcss/utils-size#configuration
+https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md
+*/
+
+/* Single level of content hierarchy on the screen */
+
+/* Two levels of content hierarchy on the screen */
+
+/* Max screen widths */
+
+/* Grid Breakpoints */
+
+/* Phone Breakpoints */
+
+/* Tablet Breakpoints */
+
+/* Query order hack for CSS MQPacker
+   https://github.com/hail2u/node-css-mqpacker#known-issues
+*/
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+/* Components */
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+/** @define Drawer */
+
+.Drawer-content {
+
+  @apply(--layout-vertical);
+
+  @apply(--paper-font-body2);
+  background-color: var(--secondary-background-color);
+  color: var(--secondary-text-color);
+  height: 100%;
+}
+
+.Drawer-header {
+  background-color: var(--primary-background-color);
+  border-bottom: 1px solid var(--divider-color);
+  color: var(--secondary-text-color);
+}
+
+.Drawer-link {
+  color: currentColor;
+  text-decoration: none;
+}
+
+.Drawer-title {
+
+  @apply(--paper-font-headline);
+}
+
+.Drawer-widget {
+  padding: 16px 0;
+}
+
+.Drawer-widget--bottom {
+  border-top: 1px solid var(--divider-color);
+}
+
+.Drawer-widget--footer {
+
+  @apply(--paper-font-caption);
+  border-top: 1px solid var(--divider-color);
+  padding-left: 24px;
+}
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+/** @define Main */
+
+.Main {
+  background-color: var(--secondary-background-color)
+}
+
+.Main-content {
+
+  @apply(--paper-font-body1);
+  color: var(--primary-text-color);
+}
+
+.Main-content a {
+  color: var(--accent-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.Main-header {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+  color: var(--text-primary-color);
+  /* postcss-bem-linter: ignore */
+
+  --paper-toolbar-content: {
+    padding: 0;
+  }
+}
+
+.Main-headerButton {
+  /* postcss-bem-linter: ignore */
+  --paper-icon-button-ink-color: var(--text-dark-primary-color);
+}
+
+.Main-headerTopBar {
+
+  @apply(--layout-horizontal);
+
+  @apply(--layout-center);
+  background-color: var(--dark-primary-color);
+  bottom: 0;
+  color: var(--text-dark-primary-color);
+  left: 0;
+  padding: 0 16px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.Main-headerMiddleBar {
+
+  @apply(--layout-horizontal);
+
+  @apply(--layout-end);
+  height: 100%;
+  margin-left: 54px;
+}
+
+.Main-headerBottomBar {
+
+  @apply(--layout-horizontal);
+
+  @apply(--layout-center);
+  margin-left: 54px;
+  /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+  -webkit-transform-origin: left center;
+          transform-origin: left center;
+}
+
+.Main-headerTitle {
+
+  @apply(--paper-font-headline);
+  margin: 0;
+  /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+  -webkit-transform-origin: left center;
+          transform-origin: left center;
+}
+
+.Main-headerSubTitle {
+
+  @apply(--paper-font-subhead);
+  /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+  -webkit-transform-origin: left center;
+          transform-origin: left center;
+}
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+/** @define Navigation */
+
+.Navigation {
+  padding: 0 24px
+}
+
+.Navigation-icon {
+  margin-right: 24px;
+  pointer-events: none;
+}
+
+.Navigation-link {
+
+  @apply(--layout-horizontal);
+
+  @apply(--layout-center);
+  color: currentColor;
+  min-height: 48px;
+  text-decoration: none;
+}
+
+.Navigation-text {
+  pointer-events: none;
+}
+
+/* https://github.com/jonathantneal/postcss-nesting/issues/16 */
+.Navigation--menu {
+  --paper-menu-background-color: var(--secondary-background-color);
+  --paper-menu-color: currentColor;
+
+  /* stylelint-disable indentation */
+
+  /* postcss-bem-linter: ignore */
+  --paper-menu-selected-item: {
+    color: var(--accent-color);
+  };
+
+  /* postcss-bem-linter: ignore */
+  --paper-menu-focused-item-after: {
+    background-color: var(--disabled-text-color);
+  };
+  /* stylelint-enable */
+}
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+/** @define SwatchPicker */
+
+.SwatchPicker {
+  @apply(--layout-horizontal);
+  @apply(--layout-center);
+
+  min-height: 48px
+}
+
+.SwatchPicker-button {
+  --paper-swatch-picker-color-size: 48px;
+  --paper-icon-button-ink-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.SwatchPicker-icon {
+  margin-right: 24px;
+}
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+/** @define Toast */
+
+/* https://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-specs */
+
+.Toast {
+  @apply(--paper-font-body1)
+}
+
+.Toast-button {
+
+  @apply(--paper-font-button);
+  color: var(--accent-color);
+  margin-left: 24px;
+}
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+/** @define Toggle */
+
+/* https://www.google.com/design/spec/components/selection-controls.html#selection-controls-switch */
+
+.Toggle {
+  @apply(--layout-horizontal);
+  @apply(--layout-center);
+
+  min-height: 48px
+}
+
+.Toggle-button {
+  --paper-toggle-button-unchecked-bar-color: var(--toggle-unchecked-bar-color);
+  --paper-toggle-button-unchecked-button-color: var(--toggle-unchecked-button-color);
+  --paper-toggle-button-unchecked-ink-color: var(--toggle-unchecked-ink-color);
+  --paper-toggle-button-checked-bar-color: var(--toggle-checked-bar-color);
+  --paper-toggle-button-checked-button-color: var(--toggle-checked-button-color);
+  --paper-toggle-button-checked-ink-color: var(--toggle-checked-ink-color);
+}
+
+.Toggle-icon {
+  margin-right: 24px;
+}
+
+/* Utilities */
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+.u-spacer {
+  @apply(--layout-flex);
+}
+
+@media (max-width: 599px) {
+  /* */
+}
+
+@media (min-width: 600px) {
+  /* */
+
+  .Drawer-content {
+    border-right: 1px solid var(--divider-color);
+  }
+
+  .Drawer-header {
+    background-color: var(--dark-primary-color);
+    border: 0 !important;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+    color: var(--text-dark-primary-color);
+  }
+
+  .Main-content {
+
+    @apply(--paper-font-body2);
+    padding: 48px 64px;
+  }
+
+  .Main-headerMiddleBar {
+    margin-left: 64px;
+  }
+
+  .Main-headerBottomBar {
+    margin-left: 64px;
+  }
+
+  .Main-headerTitle {
+
+    @apply(--paper-font-display1);
+  }
+
+  .Toast-button {
+    margin-left: 48px;
+  }
+}
+
+@media (min-width: 1600px) {
+  /* */
+}
+
+@media  (orientation: portrait) and (max-width: 479px) {
+  /* */
+}
+
+@media  (orientation: portrait) and (min-width: 480px) and (max-width: 839px) {
+  /* */
+}
+
+@media (orientation: portrait) and (min-width: 840px) {
+  /* */
+}
+
+@media           (orientation: portrait) and (max-width: 359px) {
+  /* */
+}
+
+@media           (orientation: portrait) and (min-width: 360px) and (max-width: 399px) {
+  /* */
+}
+
+@media           (orientation: portrait) and (min-width: 400px) {
+  /* */
+}
+
+@media (orientation: landscape) and (max-width: 599px) {
+  /* */
+}
+
+@media (orientation: landscape) and (min-width: 600px) and (max-width: 719px) {
+  /* */
+}
+
+@media (orientation: landscape) and (min-width: 720px) {
+  /* */
+}
+
+@media           (orientation: portrait) and (max-width: 719px) {
+  /* */
+}
+
+@media           (orientation: portrait) and (min-width: 720px) {
+  /* */
+}
+
+@media (orientation: landscape) and (max-width: 1023px) {
+  /* */
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+  /* */
+}
     </style>
     
-    <iron-localstorage id="localStorage" name="{$ appName $}"
-      value="{{storage}}"
-      on-iron-localstorage-load-empty="initializeDefaultStorage">
+    <iron-localstorage id="localStorage" name="polymer-starter-kit-plus" value="{{storage}}" on-iron-localstorage-load-empty="initializeDefaultStorage">
     </iron-localstorage>
 
     <paper-drawer-panel id="paperDrawerPanel" responsive-width="599px" drawer-width="256px">
-      {% include "my-app/views/drawer.html" %}
-      {% include "my-app/views/main.html" %}
+      <!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!-- Drawer Scroll Header Panel -->
+<paper-scroll-header-panel class="Drawer" drawer="" fixed="">
+  <!-- Drawer Toolbar -->
+  <paper-toolbar class="Drawer-header">
+    <span class="Drawer-title">Polymer Starter Kit +</span>
+  </paper-toolbar>
+
+  <!-- Drawer Content -->
+  <div class="Drawer-content">
+    <!-- Navigation -->
+    <nav class="Drawer-widget">
+      <paper-menu class="Navigation Navigation--menu list" attr-for-selected="data-route" selected="[[route]]">
+        <a class="Navigation-link" data-route="home" href$="{{baseUrl}}">
+          <iron-icon class="Navigation-icon" icon="home"></iron-icon>
+          <span class="Navigation-text">Home</span>
+        </a>
+  
+        <a class="Navigation-link" data-route="users" href$="{{baseUrl}}users">
+          <iron-icon class="Navigation-icon" icon="supervisor-account"></iron-icon>
+          <span class="Navigation-text">Users</span>
+        </a>
+  
+        <a class="Navigation-link" data-route="contact" href$="{{baseUrl}}contact">
+          <iron-icon class="Navigation-icon" icon="mail"></iron-icon>
+          <span class="Navigation-text">Contact</span>
+        </a>
+      </paper-menu>
+    </nav>
+
+    <span class="u-spacer"></span>
+
+    <div class="Drawer-widget Drawer-widget--bottom">
+      <paper-menu class="Navigation Navigation--menu list" attr-for-selected="data-route" selected="[[route]]">
+        <a class="Navigation-link" data-route="settings" href$="{{baseUrl}}settings" rel="nofollow">
+          <iron-icon class="Navigation-icon" icon="settings"></iron-icon>
+          <span class="Navigation-text">Settings</span>
+        </a>
+      </paper-menu>
+
+      <div class="Navigation">
+        <a id="submitFeedback" class="Navigation-link" href="https://github.com/StartPolymer/polymer-starter-kit-plus/issues/new?title=Feedback%20for:%20" on-tap="onSubmitFeedbackTap" target="_blank">
+          <iron-icon class="Navigation-icon" icon="announcement"></iron-icon>
+          <span class="Navigation-text">Submit Feedback</span>
+        </a>
+        
+        <a class="Navigation-link" href="https://github.com/StartPolymer/polymer-starter-kit-plus/blob/master/README.md" target="_blank">
+          <iron-icon class="Navigation-icon" icon="help"></iron-icon>
+          <span class="Navigation-text">Help</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="Drawer-widget Drawer-widget--footer">
+      <span></span>
+      &#xA0;-&#xA0;
+      <a class="Drawer-link" href="https://github.com/StartPolymer/polymer-starter-kit-plus" target="_blank">View Source</a>
+    </div>
+  </div>
+</paper-scroll-header-panel>
+
+      <!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!-- Main Area -->
+<paper-scroll-header-panel id="headerPanelMain" class="Main" main="" condenses="" keep-condensed-header="">
+
+  <!-- Main Toolbar -->
+  <paper-toolbar class="Main-header tall">
+    <!-- Header icons -->
+    <div class="Main-headerTopBar top">
+      <paper-icon-button id="paperToggle" class="Main-headerButton" icon="menu" paper-drawer-toggle=""></paper-icon-button>
+      <span class="u-spacer"></span>
+      <paper-icon-button class="Main-headerButton" icon="search"></paper-icon-button>
+      <paper-icon-button class="Main-headerButton" icon="bell-outline"></paper-icon-button>
+    </div>
+
+    <!-- Header title -->
+    <div class="Main-headerMiddleBar middle">
+      <h1 class="Main-headerTitle">{{ pageTitle }}</h1>
+    </div>
+
+    <!-- Header sub title -->
+    <div class="Main-headerBottomBar bottom">
+      <div class="Main-headerSubTitle">{{ pageSubTitle }}</div>
+    </div>
+  </paper-toolbar>
+
+  <!-- Main Content -->
+  <iron-pages class="Main-content" attr-for-selected="data-route" selected="{{route}}">
+    <!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<section class="Page" data-route="home" tabindex="-1">
+  <paper-material class="Page-paper" elevation="1">
+    <my-greeting></my-greeting>
+
+    <p class="Page-subTitle">You now have:</p>
+    <my-list></my-list>
+
+    <p>Looking for more Web App layouts? Check out our <a href="https://github.com/PolymerElements/app-layout-templates">layouts</a> collection. You can also <a href="http://polymerelements.github.io/app-layout-templates/">preview</a> them live.</p>
+  </paper-material>
+
+  <paper-material class="Page-paper" elevation="1">
+    <p>This is another card.</p>
+  </paper-material>
+
+  <paper-material class="Page-paper" elevation="1">
+    <h2>License</h2>
+<p>Everything in this repo is BSD style license unless otherwise specified.</p>
+<p>Copyright (c) 2015 The Polymer Authors. All rights reserved.</p>
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+<ul>
+<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
+<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
+<li>Neither the name of Google Inc. nor the names of its contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.</li>
+</ul>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+
+  </paper-material>
+</section>
+
+    <!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<section class="Page" data-route="users" tabindex="-1">
+  <paper-material class="Page-paper" elevation="1">
+    <a href$="{{baseUrl}}users/Addy">Addy</a><br>
+    <a href$="{{baseUrl}}users/Rob">Rob</a><br>
+    <a href$="{{baseUrl}}users/Chuck">Chuck</a><br>
+    <a href$="{{baseUrl}}users/Sam">Sam</a>
+  </paper-material>
+</section>
+
+    <!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<section class="Page" data-route="user-info" tabindex="-1">
+  <paper-material class="Page-paper" elevation="1">
+    <h2 class="Page-title">User: {{params.name}}</h2>
+    <div>This is {{params.name}}&apos;s section</div>
+  </paper-material>
+</section>
+
+    <!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<section class="Page" data-route="contact" tabindex="-1">
+  <paper-material class="Page-paper" elevation="1">
+  </paper-material>
+</section>
+
+    <!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<section class="Page" data-route="settings" tabindex="-1">
+  <paper-material class="Page-paper Page-paper--settings" elevation="1">
+    <h2 class="Page-title">Colors</h2>
+    <div class="Page-widget">
+      <div class="SwatchPicker">
+        <iron-icon class="SwatchPicker-icon" icon="color-lens"></iron-icon>
+        <span id="accentColorSwatchPicker_label" class="SwatchPicker-label">Accent Color</span>
+        <span class="u-spacer"></span>
+        <paper-swatch-picker id="accentColorSwatchPicker" class="SwatchPicker-button" aria-labelledby="accentColorSwatchPicker_label" color="{{storage.accentColor}}" on-color-picker-selected="onAccentColorSwatchPickerSelected" column-count="4" color-list="[&quot;#ff5252&quot;, &quot;#ff4081&quot;, &quot;#e040fb&quot;, &quot;#7c4dff&quot;, &quot;#536dfe&quot;, &quot;#448aff&quot;, &quot;#40c4ff&quot;, &quot;#18ffff&quot;, &quot;#64ffda&quot;, &quot;#69f0ae&quot;, &quot;#b2ff59&quot;, &quot;#eeff41&quot;, &quot;#ffff00&quot;, &quot;#ffd740&quot;, &quot;#ffab40&quot;, &quot;#ff6e40&quot;]" horizontal-align="right">
+        </paper-swatch-picker>
+      </div>
+      
+      <div class="Toggle">
+        <iron-icon class="Toggle-icon" icon="theme-light-dark"></iron-icon>
+        <span id="darkThemeToggle_label" class="Toggle-label">Dark Theme</span>
+        <span class="u-spacer"></span>
+        <paper-toggle-button id="darkThemeToggle" class="Toggle-button" aria-labelledby="darkThemeToggle_label" toggles="" checked="{{storage.darkThemeEnabled::change}}" on-change="onDarkThemeToggleChange">
+        </paper-toggle-button>
+      </div>
+    </div>
+  </paper-material>
+</section>
+
+  </iron-pages>
+</paper-scroll-header-panel>
+
     </paper-drawer-panel>
 
     <paper-toast id="confirmToast" class="Toast" duration="10000">

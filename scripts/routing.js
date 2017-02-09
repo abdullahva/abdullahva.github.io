@@ -1,3 +1,5 @@
+'use strict';
+
 /*
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -15,9 +17,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 // More info: https://visionmedia.github.io/page.js/
 
 // Sets app default base URL
-let baseUrl = '/';
+var baseUrl = '/';
 
-if (window.location.port === '') {  // if production
+if (window.location.port === '') {
+  // if production
   // Uncomment baseURL below and
   // set baseURL to '/your-pathname/' if running from folder in production
   // baseUrl = '/polymer-starter-kit-plus/';
@@ -26,16 +29,16 @@ if (window.location.port === '') {  // if production
   page.base(baseUrl.replace(/\/$/, ''));
 }
 
-let app = document.getElementById('app');
+var app = document.getElementById('app');
 
-window.addEventListener('upgraded', () => {
+window.addEventListener('upgraded', function () {
   app.baseUrl = baseUrl;
 });
 
 // Utility function to listen to an event on a node once.
 function once(node, event, fn, args) {
   var self = this;
-  var listener = function() {
+  var listener = function listener() {
     fn.apply(self, args);
     node.removeEventListener(event, listener, false);
   };
@@ -71,12 +74,12 @@ function closeDrawer(ctx, next) {
   next();
 }
 
-function setFocus(selected){
+function setFocus(selected) {
   document.querySelector('section[data-route="' + selected + '"]').focus();
 }
 
 // Routes
-page('*', scrollToTop, closeDrawer, (ctx, next) => {
+page('*', scrollToTop, closeDrawer, function (ctx, next) {
   next();
 });
 
@@ -96,15 +99,15 @@ function setHomePage() {
   }
 }
 
-page('/', () => {
+page('/', function () {
   setHomePage();
 });
 
-page(baseUrl, () => {
+page(baseUrl, function () {
   setHomePage();
 });
 
-page('/users', () => {
+page('/users', function () {
   function setData() {
     app.route = 'users';
     app.pageTitle = 'Users';
@@ -120,7 +123,7 @@ page('/users', () => {
   }
 });
 
-page('/users/:name', ctx => {
+page('/users/:name', function (ctx) {
   function setData() {
     app.route = 'user-info';
     app.pageTitle = 'User information';
@@ -137,7 +140,7 @@ page('/users/:name', ctx => {
   }
 });
 
-page('/contact', () => {
+page('/contact', function () {
   function setData() {
     app.route = 'contact';
     app.pageTitle = 'Contact';
@@ -153,7 +156,7 @@ page('/contact', () => {
   }
 });
 
-page('/settings', () => {
+page('/settings', function () {
   function setData() {
     app.route = 'settings';
     app.pageTitle = 'Settings';
@@ -170,10 +173,10 @@ page('/settings', () => {
 });
 
 // 404
-page('*', ctx => {
+page('*', function (ctx) {
   function setData() {
-    let url = ctx.path.substr(1);
-    app.$.confirmToast.text = `Can't find: ${url}. Redirected you to Home Page`;
+    var url = ctx.path.substr(1);
+    app.$.confirmToast.text = 'Can\'t find: ' + url + '. Redirected you to Home Page';
     app.$.confirmToast.show();
     page.redirect(baseUrl);
   }
@@ -192,3 +195,4 @@ page({
   // Disable for Firebase or GAE
   hashbang: false
 });
+//# sourceMappingURL=routing.js.map

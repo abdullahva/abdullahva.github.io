@@ -20,8 +20,197 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="shared-styles">
 <template><style>
 
-  @import 'breakpoints';
-  @import 'components/page';
+  /*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+/*
+Material Design Adaptive UI Breakpoints
+http://www.google.com/design/spec/layout/adaptive-ui.html#adaptive-ui-breakpoints
+
+Following SUIT CSS naming conventions
+https://github.com/suitcss/utils-size#configuration
+https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md
+*/
+
+/* Single level of content hierarchy on the screen */
+
+/* Two levels of content hierarchy on the screen */
+
+/* Max screen widths */
+
+/* Grid Breakpoints */
+
+/* Phone Breakpoints */
+
+/* Tablet Breakpoints */
+
+/* Query order hack for CSS MQPacker
+   https://github.com/hail2u/node-css-mqpacker#known-issues
+*/
+  /*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+/** @define Page */
+
+.Page-formInput {
+
+    --paper-input-container-focus-color: var(--accent-color);
+
+    width: 250px
+}
+
+.Page:focus {
+
+    outline: none
+}
+
+.Page-title {
+
+    @apply(--paper-font-display1);
+
+    margin: 32px 0
+}
+
+.Page-subTitle {
+
+    @apply(--paper-font-subhead)
+}
+
+.Page-paper {
+
+    background-color: var(--primary-background-color);
+
+    border-radius: 2px;
+
+    height: 100%;
+
+    margin-bottom: 16px;
+
+    padding: 16px
+}
+
+.Page-paper--settings {
+
+    @apply(--layout-vertical);
+
+    @apply(--layout-center)
+}
+
+.Page-widget {
+
+    width: 100%
+}
+
+@media (max-width: 599px) {
+
+    /* */
+
+    .Page-title {
+
+        font-size: 24px;
+
+        margin: 16px 0
+    }
+}
+
+@media (min-width: 600px) {
+
+    /* */
+
+    .Page-paper {
+
+        margin-bottom: 32px;
+
+        padding: 16px 32px
+    }
+
+    .Page-widget {
+
+        width: 512px
+    }
+}
+
+@media (min-width: 1600px) {
+
+    /* */
+}
+
+@media  (orientation: portrait) and (max-width: 479px) {
+
+    /* */
+}
+
+@media  (orientation: portrait) and (min-width: 480px) and (max-width: 839px) {
+
+    /* */
+}
+
+@media (orientation: portrait) and (min-width: 840px) {
+
+    /* */
+}
+
+@media           (orientation: portrait) and (max-width: 359px) {
+
+    /* */
+}
+
+@media           (orientation: portrait) and (min-width: 360px) and (max-width: 399px) {
+
+    /* */
+}
+
+@media           (orientation: portrait) and (min-width: 400px) {
+
+    /* */
+}
+
+@media (orientation: landscape) and (max-width: 599px) {
+
+    /* */
+}
+
+@media (orientation: landscape) and (min-width: 600px) and (max-width: 719px) {
+
+    /* */
+}
+
+@media (orientation: landscape) and (min-width: 720px) {
+
+    /* */
+}
+
+@media           (orientation: portrait) and (max-width: 719px) {
+
+    /* */
+}
+
+@media           (orientation: portrait) and (min-width: 720px) {
+
+    /* */
+}
+
+@media (orientation: landscape) and (max-width: 1023px) {
+
+    /* */
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+
+    /* */
+}
 
 </style></template>
 </dom-module>
