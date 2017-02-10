@@ -83,8 +83,8 @@ page('*', scrollToTop, closeDrawer, (ctx, next) => {
 function setHomePage() {
   function setData() {
     app.route = 'home';
-    app.pageTitle = 'Polymer';
-    app.pageSubTitle = 'The future of the web today';
+    app.pageTitle = 'E Michael Abdullah';
+    app.pageSubTitle = 'Innovative and effective Principle Developer with expertise in Front End Modular Design and .NET Server Side stack.  Extensive experience in product development, problem solving and innovative design.';
     setFocus(app.route);
   }
 

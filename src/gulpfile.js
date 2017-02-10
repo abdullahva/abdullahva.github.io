@@ -53,7 +53,7 @@ gulp.task('lint-js', ['ensureFiles'], function() {
       stream: true,
       once: true
     }));
-    
+
     //.pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
 });
 
