@@ -14,21 +14,18 @@ class MyList {
   beforeRegister() {
     this.is = 'my-list';
     this.properties = {
-      items: {
-        type: Array,
-        notify: true
+        companies: {
+          type: Object,
+          observer: 'dataChanged'
+        }
+      };
+
+      this.dataChanged = function(newData, oldData) {
+        console.log("newData " + JSON.stringify(newData));
       }
-    };
   }
   ready() {
-    this.items = [
-      'Responsive Web App boilerplate',
-      'Iron Elements and Paper Elements',
-      'End-to-end Build Tooling (including Vulcanize)',
-      'Unit testing with Web Component Tester',
-      'Routing with Page.js',
-      'Offline support with the Platinum Service Worker Elements'
-    ];
+    this.companies = [{companyName:"ralph"}];
   }
 }
 

@@ -1,0 +1,22 @@
+{
+  "companies": {
+    "07ea3888-530a-597f-81e5-37ad9b479d9a": {
+      "companyKey": "07ea3888-530a-597f-81e5-37ad9b479d9a",
+      "companyName": "eviCore Healthcare",
+      "title": "Senior Developer/Lead Developer",
+      "location": "Bluffton, SC",
+      "startDate": "September 2014",
+      "endDate": "Present",
+      "summaryOfWork": "Worked with emerging technologies developing new platforms and infrastructure to support long term vision and strategic development.Led enterprise architecture, solution architecture, and development for company wide Front End.",
+      "experiences": [{
+        "summary": "Defined Enterprise Architecture for the Front End of a new core platform to replace multiple legacy products into one centralized platform.Focused on enterprise JS and HTML designs that supported building discrete reusable components,loose coupling, and framework independence."
+      }, {
+        "summary": "Architected and led new product development for an Oncology Treatment Builder Web Application built on, .NET MVC, and Html 5 Web Components using Google Polymer.Led 14 total developers over the course of the project including full time employees as well as on - shore and off - shore contractors."
+      }, {
+        "summary": "Developed a highly available Java web service that evaluated datasets against predicative models using JPMML.Including admin endpoints and UI that interfaced with a Gemfire data fabric for storage."
+      }]
+
+    }
+
+  }
+}

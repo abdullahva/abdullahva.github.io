@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase.html">
 
 <!-- App Theme -->
 <link rel="import" href="../../themes/{$ appTheme $}/theme.html">
@@ -43,7 +44,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       @import "theme.css";
     </style>
-    
+
     <iron-localstorage id="localStorage" name="{$ appName $}"
       value="{{storage}}"
       on-iron-localstorage-load-empty="initializeDefaultStorage">
