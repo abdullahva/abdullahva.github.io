@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase.html">
 
 <!-- App Theme -->
 <link rel="import" href="../../themes/default-theme/theme.html">
@@ -581,7 +582,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   /* */
 }
     </style>
-    
+
     <iron-localstorage id="localStorage" name="polymer-starter-kit-plus" value="{{storage}}" on-iron-localstorage-load-empty="initializeDefaultStorage">
     </iron-localstorage>
 
@@ -600,7 +601,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <paper-scroll-header-panel class="Drawer" drawer="" fixed="">
   <!-- Drawer Toolbar -->
   <paper-toolbar class="Drawer-header">
-    <span class="Drawer-title">Polymer Starter Kit +</span>
+    <!-- <span class="Drawer-title">Polymer Starter Kit +</span> -->
   </paper-toolbar>
 
   <!-- Drawer Content -->
@@ -612,12 +613,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <iron-icon class="Navigation-icon" icon="home"></iron-icon>
           <span class="Navigation-text">Home</span>
         </a>
-  
+
         <a class="Navigation-link" data-route="users" href$="{{baseUrl}}users">
           <iron-icon class="Navigation-icon" icon="supervisor-account"></iron-icon>
           <span class="Navigation-text">Users</span>
         </a>
-  
+
         <a class="Navigation-link" data-route="contact" href$="{{baseUrl}}contact">
           <iron-icon class="Navigation-icon" icon="mail"></iron-icon>
           <span class="Navigation-text">Contact</span>
@@ -636,14 +637,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </paper-menu>
 
       <div class="Navigation">
-        <a id="submitFeedback" class="Navigation-link" href="https://github.com/StartPolymer/polymer-starter-kit-plus/issues/new?title=Feedback%20for:%20" on-tap="onSubmitFeedbackTap" target="_blank">
-          <iron-icon class="Navigation-icon" icon="announcement"></iron-icon>
+        <a id="submitFeedback" class="Navigation-link" href="" on-tap="onSubmitFeedbackTap" target="_blank">
+          <iron-icon class="Navigation-icon" icon="lightbulb-outline"></iron-icon>
           <span class="Navigation-text">Submit Feedback</span>
         </a>
-        
-        <a class="Navigation-link" href="https://github.com/StartPolymer/polymer-starter-kit-plus/blob/master/README.md" target="_blank">
-          <iron-icon class="Navigation-icon" icon="help"></iron-icon>
-          <span class="Navigation-text">Help</span>
+
+        <a class="Navigation-link" href="https://www.linkedin.com/in/emabdullah" target="_blank">
+          <iron-icon class="Navigation-icon" icon="settings-input-hdmi"></iron-icon>
+          <span class="Navigation-text">Connect</span>
         </a>
       </div>
     </div>
@@ -651,7 +652,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="Drawer-widget Drawer-widget--footer">
       <span></span>
       &#xA0;-&#xA0;
-      <a class="Drawer-link" href="https://github.com/StartPolymer/polymer-starter-kit-plus" target="_blank">View Source</a>
+      <!-- <a class="Drawer-link" href="https://github.com/StartPolymer/polymer-starter-kit-plus" target="_blank">View Source</a> -->
     </div>
   </div>
 </paper-scroll-header-panel>

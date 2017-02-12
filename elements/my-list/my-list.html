@@ -28,11 +28,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 }
     </style>
 
-    <ul>
-      <template is="dom-repeat" items="{{items}}">
-        <li><span>{{item}}</span></li>
-      </template>
-    </ul>
+    <firebase-app auth-domain="resume-cfacc.firebaseapp.com" database-url="https://resume-cfacc.firebaseio.com/" api-key="AIzaSyDkKN6KRCgXJBxcWaJUFqdSokDQwxMesu8">
+    </firebase-app>
+
+    <firebase-query id="qry" path="/companies" data="{{companies}}">
+    </firebase-query>
+
+    <template is="dom-repeat" items="[[companies]]" as"item"="">
+      <div>[[item.companyName]]</div>
+    </template>
+    <template is="dom-repeat" items="{{companies}}" as="item">
+      <sticky-note note-data="{{item.companyName}}">{{item.companyName}}</sticky-note>
+    </template>
   </template>
 
   <script src="my-list.js"></script>
