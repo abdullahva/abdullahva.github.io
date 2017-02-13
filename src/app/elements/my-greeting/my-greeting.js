@@ -16,7 +16,7 @@ class MyGreeting {
     this.properties = {
       greeting: {
         type: String,
-        value: 'Welcome!',
+        value: 'Professional Experience',
         notify: true
       }
     };

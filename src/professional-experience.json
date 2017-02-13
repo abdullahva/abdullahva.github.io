@@ -16,6 +16,20 @@
         "summary": "Developed a highly available Java web service that evaluated datasets against predicative models using JPMML.Including admin endpoints and UI that interfaced with a Gemfire data fabric for storage."
       }]
 
+    },
+    "ae13eca3-addd-5313-a9ac-4077e6f95896": {
+      "companyKey": "ae13eca3-addd-5313-a9ac-4077e6f95896",
+      "companyName": "BFG",
+      "title": "Senior Developer",
+      "location": "Bluffton, SC",
+      "startDate": "February 2014",
+      "endDate": "September 2014",
+      "summaryOfWork": "Led design decisions and development of Mid-Tier Software, specifically Controllers, EF 6.1 Mapping, Repository Layer, Service Tier, View Models, Transformations, and site wide utilities, for hashing, parallelization, etc.",
+      "experiences": [{
+        "summary": "Created a new MVC and Service Mid-Tier for a public facing website, based on N-Tier Architecture."
+      }, {
+        "summary": "Designed and Developed New Service tier based on a legacy libraries, for the New MVC Site."
+      }]
     }
 
   }

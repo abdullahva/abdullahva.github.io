@@ -16,17 +16,19 @@ class MyList {
     this.properties = {
         companies: {
           type: Object,
-          observer: 'dataChanged'
+          notify:true
         }
       };
+
+      this.observers = [
+          'dataChanged(companies.splices)'
+        ];
 
       this.dataChanged = function(newData, oldData) {
         console.log("newData " + JSON.stringify(newData));
       }
   }
-  ready() {
-    this.companies = [{companyName:"ralph"}];
-  }
+  ready() {  }
 }
 
 Polymer(MyList);

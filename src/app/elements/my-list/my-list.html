@@ -20,6 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       auth-domain="resume-cfacc.firebaseapp.com"
       database-url="https://resume-cfacc.firebaseio.com/"
       api-key="AIzaSyDkKN6KRCgXJBxcWaJUFqdSokDQwxMesu8">
+
     </firebase-app>
 
     <firebase-query
@@ -28,12 +29,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         data="{{companies}}">
     </firebase-query>
 
-    <template is="dom-repeat" items="[[companies]]" as"item">
-      <div>[[item.companyName]]</div>
-    </template>
+
     <template is="dom-repeat" items="{{companies}}" as="item">
-      <sticky-note note-data="{{item.companyName}}">{{item.companyName}}</sticky-note>
+      <div class="layout horizontal justified">
+        <span>
+            <sticky-note note-data="{{item.companyName}}"><b>{{item.companyName}}</b></sticky-note>
+            <sticky-note note-data="{{item.companyName}}">{{item.location}}</sticky-note>
+          </span>
+        <span>
+                  <sticky-note note-data="{{item.companyName}}">{{item.startDate}} - </sticky-note>
+                        <sticky-note note-data="{{item.companyName}}">{{item.endDate}}</sticky-note>
+          </span>
+      </div>
+      <div class="layout horizontal start-justified">
+        <span>
+            <sticky-note note-data="{{item.companyName}}">{{item.title}} </sticky-note>
+          </span>
+      </div>
+      <br>
+      <div class="layout horizontal flex">
+        <span>
+            <sticky-note note-data="{{item.companyName}}">{{item.summaryOfWork}} </sticky-note>
+          </span>
+      </div>
+      <template is="dom-repeat" items="{{item.experiences}}" as="item">
+        
+      </template>
+      <br>
     </template>
+
   </template>
 
   <script src="my-list.js"></script>
