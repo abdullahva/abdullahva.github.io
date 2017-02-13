@@ -26,7 +26,11 @@ class MyList {
 
       this.dataChanged = function(newData, oldData) {
         console.log("newData " + JSON.stringify(newData));
-      }
+      };
+
+      this.inverseSort = function compareNumbers(a, b) {
+        return b.companyID - a.companyID;
+      };
   }
   ready() {  }
 }

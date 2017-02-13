@@ -26,11 +26,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <firebase-query
         id="qry"
         path="/companies"
+        order-by-child="companyID"
         data="{{companies}}">
     </firebase-query>
 
 
-    <template is="dom-repeat" items="{{companies}}" as="item">
+    <template is="dom-repeat" items="{{companies}}" as="item" sort="inverseSort">
       <div class="layout horizontal justified">
         <span>
             <sticky-note note-data="{{item.companyName}}"><b>{{item.companyName}}</b></sticky-note>
@@ -52,9 +53,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <sticky-note note-data="{{item.companyName}}">{{item.summaryOfWork}} </sticky-note>
           </span>
       </div>
-      <template is="dom-repeat" items="{{item.experiences}}" as="item">
-        
-      </template>
+
+      <ul>
+        <template is="dom-repeat" items="{{item.experiences}}" as="item">
+          <li><span>{{item.summary}}</span></li>
+        </template>
+      </ul>
       <br>
     </template>
 

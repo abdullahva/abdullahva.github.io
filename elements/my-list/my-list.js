@@ -28,19 +28,23 @@ var MyList = function () {
       this.properties = {
         companies: {
           type: Object,
-          observer: 'dataChanged'
+          notify: true
         }
       };
+
+      this.observers = ['dataChanged(companies.splices)'];
 
       this.dataChanged = function (newData, oldData) {
         console.log("newData " + JSON.stringify(newData));
       };
+
+      this.inverseSort = function compareNumbers(a, b) {
+        return b.companyID - a.companyID;
+      };
     }
   }, {
     key: 'ready',
-    value: function ready() {
-      this.companies = [{ companyName: "ralph" }];
-    }
+    value: function ready() {}
   }]);
 
   return MyList;

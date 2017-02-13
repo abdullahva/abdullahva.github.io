@@ -2,35 +2,66 @@
   "companies": {
     "07ea3888-530a-597f-81e5-37ad9b479d9a": {
       "companyKey": "07ea3888-530a-597f-81e5-37ad9b479d9a",
+      "companyID":"4",
       "companyName": "eviCore Healthcare",
       "title": "Senior Developer/Lead Developer",
       "location": "Bluffton, SC",
       "startDate": "September 2014",
       "endDate": "Present",
-      "summaryOfWork": "Worked with emerging technologies developing new platforms and infrastructure to support long term vision and strategic development.Led enterprise architecture, solution architecture, and development for company wide Front End.",
+      "summaryOfWork": "Worked with emerging technologies developing new platforms and infrastructure to support long term vision and strategic development. Led enterprise architecture, solution architecture, and development for company wide Front End.",
       "experiences": [{
-        "summary": "Defined Enterprise Architecture for the Front End of a new core platform to replace multiple legacy products into one centralized platform.Focused on enterprise JS and HTML designs that supported building discrete reusable components,loose coupling, and framework independence."
+        "summary": "Defined Enterprise Architecture for the Front End of a new core platform to replace multiple legacy products. Focused on enterprise JS and HTML designs to support discrete reusable components, loose coupling, and framework independence. I leveraged Angular directives, Bootstrap CSS, and modular JS designs while leading solution architecture."
       }, {
-        "summary": "Architected and led new product development for an Oncology Treatment Builder Web Application built on, .NET MVC, and Html 5 Web Components using Google Polymer.Led 14 total developers over the course of the project including full time employees as well as on - shore and off - shore contractors."
+        "summary": "Architected and led new product development for an Oncology Treatment Builder Web Application built on, .NET MVC Backend, and Html 5 Web Components using Google Polymer 1.0. Led 14 total developers over the course of the project including full time employees as well as on-shore and off-shore contractors."
       }, {
-        "summary": "Developed a highly available Java web service that evaluated datasets against predicative models using JPMML.Including admin endpoints and UI that interfaced with a Gemfire data fabric for storage."
+        "summary": "Developed a highly available Java web service that evaluated datasets against predicative models using JPMML.  Included admin endpoints and UI that interfaced with a Gemfire data fabric for storage."
       }]
 
     },
     "ae13eca3-addd-5313-a9ac-4077e6f95896": {
       "companyKey": "ae13eca3-addd-5313-a9ac-4077e6f95896",
+      "companyID":"3",
       "companyName": "BFG",
       "title": "Senior Developer",
       "location": "Bluffton, SC",
       "startDate": "February 2014",
       "endDate": "September 2014",
-      "summaryOfWork": "Led design decisions and development of Mid-Tier Software, specifically Controllers, EF 6.1 Mapping, Repository Layer, Service Tier, View Models, Transformations, and site wide utilities, for hashing, parallelization, etc.",
+      "summaryOfWork": "Led design decisions and development of Mid-Tier Software for Interactive advertising sites and apps. I specifically led development for Controllers, EF 6.1 Mapping, Repository Layer, Service Tier, View Models, Transformations, and site wide utilities, for hashing, parallelization, etc.",
       "experiences": [{
         "summary": "Created a new MVC and Service Mid-Tier for a public facing website, based on N-Tier Architecture."
       }, {
         "summary": "Designed and Developed New Service tier based on a legacy libraries, for the New MVC Site."
       }]
+    },
+    "00dc6c70-e3f1-5998-9521-cc44f42e85f1": {
+      "companyKey": "00dc6c70-e3f1-5998-9521-cc44f42e85f1",
+      "companyID":"1",
+      "companyName": "Carecore National",
+      "title": "Application Developer II",
+      "location": "Bluffton, SC",
+      "startDate": "May 2012",
+      "endDate": "February 2014",
+      "summaryOfWork": "Responsible for development and design of new platforms and applications, as well as release support during implementation. Also worked with end users and enterprise architects to synthesize requirements and design solutions.",
+      "experiences": [{
+        "summary": "Developed a highly available Java RESTful enterprise message bus.  Following the pub/sub model for high throughput on Gemfire data cache.  Personal focus on Spring MVC, predicate rules engine, and Spring IOC."
+      }, {
+        "summary": "Designed, developed, and implemented a customer facing ASP.NET Web application in C#.  Using .NET’s MVC framework with Razor, AJAX, and Entity Framework as the ORM tool for the data access layer. "
+      }]
+    },
+    "99f7d5a1-7cc6-5a0a-9685-7322034f9555": {
+      "companyKey": "99f7d5a1-7cc6-5a0a-9685-7322034f9555",
+      "companyID":"0",
+      "companyName": "T-Metrics Inc",
+      "title": "Product Specialist",
+      "location": "Charlotte, NC",
+      "startDate": "June 2010",
+      "endDate": "April 2012",
+      "summaryOfWork": "Developed, maintained, and installed software solutions and provided advanced customer support.  Developed applications for new product lines.  Worked with customers directly on installations and operational support.  ",
+      "experiences": [{
+        "summary": "Created the first program of a new product line of workforce management .NET applications."
+      }, {
+        "summary": "Lead week long installations and technical training as Team Lead at customer sites."
+      }]
     }
-
   }
 }

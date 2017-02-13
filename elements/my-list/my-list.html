@@ -26,20 +26,51 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 :host {
   display: block;
 }
+
+b {
+  color: var(--primary-color);
+}
     </style>
 
     <firebase-app auth-domain="resume-cfacc.firebaseapp.com" database-url="https://resume-cfacc.firebaseio.com/" api-key="AIzaSyDkKN6KRCgXJBxcWaJUFqdSokDQwxMesu8">
+
     </firebase-app>
 
-    <firebase-query id="qry" path="/companies" data="{{companies}}">
+    <firebase-query id="qry" path="/companies" order-by-child="companyID" data="{{companies}}">
     </firebase-query>
 
-    <template is="dom-repeat" items="[[companies]]" as"item"="">
-      <div>[[item.companyName]]</div>
+
+    <template is="dom-repeat" items="{{companies}}" as="item" sort="inverseSort">
+      <div class="layout horizontal justified">
+        <span>
+            <sticky-note note-data="{{item.companyName}}"><b>{{item.companyName}}</b></sticky-note>
+            <sticky-note note-data="{{item.companyName}}">{{item.location}}</sticky-note>
+          </span>
+        <span>
+                  <sticky-note note-data="{{item.companyName}}">{{item.startDate}} - </sticky-note>
+                        <sticky-note note-data="{{item.companyName}}">{{item.endDate}}</sticky-note>
+          </span>
+      </div>
+      <div class="layout horizontal start-justified">
+        <span>
+            <sticky-note note-data="{{item.companyName}}">{{item.title}} </sticky-note>
+          </span>
+      </div>
+      <br>
+      <div class="layout horizontal flex">
+        <span>
+            <sticky-note note-data="{{item.companyName}}">{{item.summaryOfWork}} </sticky-note>
+          </span>
+      </div>
+
+      <ul>
+        <template is="dom-repeat" items="{{item.experiences}}" as="item">
+          <li><span>{{item.summary}}</span></li>
+        </template>
+      </ul>
+      <br>
     </template>
-    <template is="dom-repeat" items="{{companies}}" as="item">
-      <sticky-note note-data="{{item.companyName}}">{{item.companyName}}</sticky-note>
-    </template>
+
   </template>
 
   <script src="my-list.js"></script>

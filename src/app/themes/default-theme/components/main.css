@@ -21,6 +21,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       padding: 48px 64px;
     }
 
+    @nest & b{
+      color: currentColor;
+    }
+
     @nest & a {
       color: var(--accent-color);
       font-weight: 500;
