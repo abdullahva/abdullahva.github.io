@@ -24,6 +24,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/iron-localstorage/iron-localstorage.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 
 <!-- Paper elements -->
 <link rel="import" href="../../bower_components/paper-drawer-panel/paper-drawer-panel.html">
@@ -691,12 +692,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <!-- Header title -->
     <div class="Main-headerMiddleBar middle">
-      <h1 class="Main-headerTitle">{{ pageTitle }}</h1>
+        <h1 class="Main-headerTitle">{{ pageTitle }}</h1>
     </div>
 
     <!-- Header sub title -->
     <div class="Main-headerBottomBar bottom">
-      <div class="Main-headerSubTitle">{{ pageSubTitle }}</div>
+      <iron-media-query query="(min-width: 600px)" query-matches="{{isAtLeast600px}}"></iron-media-query>
+      <template is="dom-if" if="{{isAtLeast600px}}">
+        <div class="Main-headerSubTitle">{{ pageSubTitle }}</div>
+      </template>
     </div>
   </paper-toolbar>
 
