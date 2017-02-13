@@ -8,7 +8,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 var primaryColorName = 'pink',
-    accentColorName  = 'cyan',
+    accentColorName  = 'indigo',
     themeMode        = 'light', // or dark
 
     colors           = require('./colors'),
