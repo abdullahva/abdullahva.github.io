@@ -30,6 +30,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 b {
   color: var(--primary-color);
 }
+
+.title {
+  color: var(--accent-color);
+}
+
+paper-material {
+  padding: 20px;
+  margin-bottom: 20px;
+  background: var(--secondary-background-color);
+}
     </style>
 
     <firebase-app auth-domain="resume-cfacc.firebaseapp.com" database-url="https://resume-cfacc.firebaseio.com/" api-key="AIzaSyDkKN6KRCgXJBxcWaJUFqdSokDQwxMesu8">
@@ -39,27 +49,29 @@ b {
     <firebase-query id="qry" path="/companies" order-by-child="companyID" data="{{companies}}">
     </firebase-query>
 
-
+    <!-- Added Inverse Sort function, because Firebase doesn't have descending order functionality  -->
     <template is="dom-repeat" items="{{companies}}" as="item" sort="inverseSort">
+      <!-- Repeating card for each company represented -->
+      <paper-material elevation="1">
       <div class="layout horizontal justified">
         <span>
             <sticky-note note-data="{{item.companyName}}"><b>{{item.companyName}}</b></sticky-note>
-            <sticky-note note-data="{{item.companyName}}">{{item.location}}</sticky-note>
+            <sticky-note note-data="{{item.location}}">{{item.location}}</sticky-note>
           </span>
         <span>
-                  <sticky-note note-data="{{item.companyName}}">{{item.startDate}} - </sticky-note>
-                        <sticky-note note-data="{{item.companyName}}">{{item.endDate}}</sticky-note>
+                  <sticky-note note-data="{{item.startDate}}">{{item.startDate}} - </sticky-note>
+                  <sticky-note note-data="{{item.endDate}}">{{item.endDate}}</sticky-note>
           </span>
       </div>
       <div class="layout horizontal start-justified">
         <span>
-            <sticky-note note-data="{{item.companyName}}">{{item.title}} </sticky-note>
+            <sticky-note class="title" note-data="{{item.title}}">{{item.title}} </sticky-note>
           </span>
       </div>
       <br>
       <div class="layout horizontal flex">
         <span>
-            <sticky-note note-data="{{item.companyName}}">{{item.summaryOfWork}} </sticky-note>
+            <sticky-note note-data="{{item.summaryOfWork}}">{{item.summaryOfWork}} </sticky-note>
           </span>
       </div>
 
@@ -68,7 +80,7 @@ b {
           <li><span>{{item.summary}}</span></li>
         </template>
       </ul>
-      <br>
+    </paper-material>
     </template>
 
   </template>
