@@ -1,0 +1,121 @@
+PUT /policyindex
+{
+  "settings": {
+    "analysis": {
+      "filter": {
+        "nGram_filter": {
+          "type": "nGram",
+          "min_gram": 2,
+          "max_gram": 20,
+          "token_chars": [
+            "letter",
+            "digit",
+            "punctuation",
+            "symbol"
+          ]
+        }
+      },
+      "analyzer": {
+        "nGram_analyzer": {
+          "type": "custom",
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            "asciifolding",
+            "nGram_filter"
+          ]
+        },
+        "whitespace_analyzer": {
+          "type": "custom",
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            "asciifolding"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "policy": {
+      "_all": {
+        "analyzer": "nGram_analyzer",
+        "search_analyzer": "whitespace_analyzer"
+      },
+      "properties": {
+        "organization": {
+          "type": "string",
+          "index": "not_analyzed",
+          "include_in_all": false
+        },
+        "memberNumber": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "subscriberNumber": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "policyNumber": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "subscriberRelatonship": {
+          "type": "string",
+          "index": "not_analyzed",
+          "include_in_all": false
+        },
+        "firstName": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "lastName": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "middleInitial": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "memberCode": {
+          "type": "string",
+          "index": "no",
+         "include_in_all": false
+        },
+        "dateOfBirth": {
+          "type": "date",
+          "format": "strict_date_optional_time||epoch_millis"
+        },
+        "dateOfBirthSearch": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "zip": {
+          "type": "string",
+          "include_in_all": false
+        },
+        "addressLine1": {
+          "type": "string",
+          "include_in_all": false
+        },
+        "sSNHash": {
+         "type": "string",
+          "index": "not_analyzed",
+          "include_in_all": false
+        },
+        "personKey": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "policyKey": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "groupNumber": {
+          "type": "string",
+          "index": "not_analyzed"
+        }
+      }
+    }
+  }
+}
