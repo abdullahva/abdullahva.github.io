@@ -40,6 +40,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-toggle-button/paper-toggle-button.html">
 <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 
+  <!-- Custom Paper Elements -->
+<link rel="import" href="../../bower_components/paper-collapse-item/paper-collapse-item.html">
+<link rel="import" href="../../bower_components/paper-collapse-item/paper-collapse-group.html">
+
+<!-- Google Elements -->
+<link rel="import" href="../../bower_components/google-youtube/google-youtube.html">
+
 <!-- Custom elements -->
 <link rel="import" href="../my-greeting/my-greeting.html">
 <link rel="import" href="../my-list/my-list.html">
@@ -345,6 +352,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   -webkit-transform-origin: left center;
           transform-origin: left center;
 }
+
+.Main paper-collapse-item {
+  margin: 5px;
+
+  --paper-collapse-item-header : {
+    border: 1px solid #CCC;
+    padding-left: 15px;
+    background-color: var(--accent-color);
+    color: #FFF;
+  }
+
+  --paper-collapse-item-content : {
+    border: 1px solid #CCC;
+    border-top: none;
+    padding: 15px;
+  }
+}
+
+.Main paper-collapse-item p {
+  white-space: normal;
+}
 /*
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -621,17 +649,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <paper-menu class="Navigation Navigation--menu list" attr-for-selected="data-route" selected="[[route]]">
         <a class="Navigation-link" data-route="home" href$="{{baseUrl}}">
           <iron-icon class="Navigation-icon" icon="home"></iron-icon>
-          <span class="Navigation-text">Home</span>
+          <span class="Navigation-text">Resume</span>
         </a>
 
         <a class="Navigation-link" data-route="users" href$="{{baseUrl}}users">
           <iron-icon class="Navigation-icon" icon="supervisor-account"></iron-icon>
-          <span class="Navigation-text">Users</span>
+          <span class="Navigation-text">Visuals</span>
         </a>
 
-        <a class="Navigation-link" data-route="contact" href$="{{baseUrl}}contact">
+        <a class="Navigation-link" data-route="whoiam" href$="{{baseUrl}}whoiam">
           <iron-icon class="Navigation-icon" icon="mail"></iron-icon>
-          <span class="Navigation-text">Contact</span>
+          <span class="Navigation-text">Who I Am Not</span>
         </a>
       </paper-menu>
     </nav>
@@ -757,10 +785,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <section class="Page" data-route="users" tabindex="-1">
   <paper-material class="Page-paper" elevation="1">
-    <a href$="{{baseUrl}}users/Addy">Addy</a><br>
-    <a href$="{{baseUrl}}users/Rob">Rob</a><br>
-    <a href$="{{baseUrl}}users/Chuck">Chuck</a><br>
-    <a href$="{{baseUrl}}users/Sam">Sam</a>
+    <iframe src="http://localhost:5601/app/kibana#/dashboard/1520e700-f8ac-11e6-903f-6fa644617c32?embed=true&amp;_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3A&apos;2017-02-19T04%3A40%3A59.999Z&apos;%2Cinterval%3A&apos;1m&apos;%2Cmode%3Aabsolute%2Ctimezone%3AAmerica%2FNew_York%2Cto%3A&apos;2017-02-19T04%3A40%3A59.999Z&apos;))" height="620" width="800"></iframe>
   </paper-material>
 </section>
 
@@ -790,10 +815,43 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
+<section class="Page" data-route="whoiam" tabindex="-1">
+  <paper-collapse-group>
+    <paper-collapse-item header="Ever Googled Yourself?" opened="">
 
-<section class="Page" data-route="contact" tabindex="-1">
-  <paper-material class="Page-paper" elevation="1">
-  </paper-material>
+    </paper-collapse-item>
+    <paper-collapse-item header="I Am Not...A 1997 World&apos;s Strongest Man Competitor">
+
+      <google-youtube video-id="L2pkahkZEmg" height="480px" width="680px" rel="0" start="5318" autoplay="-1">
+      </google-youtube>
+    </paper-collapse-item>
+    <paper-collapse-item header="I Am Not...Your Doctor">
+      <div class="layout horizontal justified-start">
+        <div>
+          <img src="/images/Doctor_Abdalla.png">
+        </div>
+        <div>
+          <span><p>The spelling of the last name is different...are you guys even trying?</p></span>
+        </div>
+      </div>
+    </paper-collapse-item>
+    <paper-collapse-item header="I Am Not...This Other Developer">
+      <div>
+        <span class="flex">
+          <p>
+          There is another developer out in the world named Michael Abdullah.  He owns a blog at <a href="http://mikeabdullah.net/">mikeabullah.net</a> and has some Github commits under the same name.  Fortunately, he appears to work mostly on IOS and Cocoa development, while I focus more on Enterprise Architecture and Web Development, and new Product Development.
+          <br><br>
+          If you&apos;re looking for IOS development, I recommend checking him out; us Michael Abdullah&apos;s have to stick together, right!
+        </p>
+
+        </span>
+      </div>
+    </paper-collapse-item>
+    <!-- <paper-material class="Page-paper" elevation="1">
+
+    <img src="/images/MA_1997_Strongman.png" />
+  </paper-material> -->
+  </paper-collapse-group>
 </section>
 
     <!--

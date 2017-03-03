@@ -88,10 +88,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <section class="Page" data-route="users" tabindex="-1">
   <paper-material class="Page-paper" elevation="1">
-    <a href$="{{baseUrl}}users/Addy">Addy</a><br>
-    <a href$="{{baseUrl}}users/Rob">Rob</a><br>
-    <a href$="{{baseUrl}}users/Chuck">Chuck</a><br>
-    <a href$="{{baseUrl}}users/Sam">Sam</a>
+    <iframe src="http://localhost:5601/app/kibana#/dashboard/1520e700-f8ac-11e6-903f-6fa644617c32?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3A'2017-02-19T04%3A40%3A59.999Z'%2Cinterval%3A'1m'%2Cmode%3Aabsolute%2Ctimezone%3AAmerica%2FNew_York%2Cto%3A'2017-02-19T04%3A40%3A59.999Z'))" height="620" width="800"></iframe>
   </paper-material>
 </section>
 
@@ -121,10 +118,43 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
+<section class="Page" data-route="whoiam" tabindex="-1">
+  <paper-collapse-group>
+    <paper-collapse-item header="Ever Googled Yourself?" opened>
 
-<section class="Page" data-route="contact" tabindex="-1">
-  <paper-material class="Page-paper" elevation="1">
-  </paper-material>
+    </paper-collapse-item>
+    <paper-collapse-item header="I Am Not...A 1997 World's Strongest Man Competitor">
+
+      <google-youtube video-id="L2pkahkZEmg" height="480px" width="680px" rel="0" start="5318" autoplay="-1">
+      </google-youtube>
+    </paper-collapse-item>
+    <paper-collapse-item header="I Am Not...Your Doctor">
+      <div class="layout horizontal justified-start">
+        <div>
+          <img src="/images/Doctor_Abdalla.png" />
+        </div>
+        <div>
+          <span><p>The spelling of the last name is different...are you guys even trying?</p></span>
+        </div>
+      </div>
+    </paper-collapse-item>
+    <paper-collapse-item header="I Am Not...This Other Developer">
+      <div>
+        <span class="flex">
+          <p>
+          There is another developer out in the world named Michael Abdullah.  He owns a blog at <a href="http://mikeabdullah.net/">mikeabullah.net</a> and has some Github commits under the same name.  Fortunately, he appears to work mostly on IOS and Cocoa development, while I focus more on Enterprise Architecture and Web Development, and new Product Development.
+          <br /><br />
+          If you're looking for IOS development, I recommend checking him out; us Michael Abdullah's have to stick together, right!
+        </p>
+
+        </span>
+      </div>
+    </paper-collapse-item>
+    <!-- <paper-material class="Page-paper" elevation="1">
+
+    <img src="/images/MA_1997_Strongman.png" />
+  </paper-material> -->
+  </paper-collapse-group>
 </section>
 
     <!--

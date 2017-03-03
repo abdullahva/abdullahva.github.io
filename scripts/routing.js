@@ -140,11 +140,11 @@ page('/users/:name', function (ctx) {
   }
 });
 
-page('/contact', function () {
+page('/whoiam', function () {
   function setData() {
-    app.route = 'contact';
-    app.pageTitle = 'Contact';
-    app.pageSubTitle = 'This is the contact section';
+    app.route = 'whoiam';
+    app.pageTitle = 'Who I Am';
+    app.pageSubTitle = 'This is a section to disambiguate me, from other Michael Abdullah\'s on the web.';
     setFocus(app.route);
   }
 
