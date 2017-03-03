@@ -105,4 +105,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     /* Required for main area's paper-scroll-header-panel custom condensing transformation */
     transform-origin: left center;
   }
+
+  @nest & paper-collapse-item {
+    margin: 5px;
+    --paper-collapse-item-header : {
+      border: 1px solid #CCC;
+      padding-left: 15px;
+      background-color: var(--accent-color);
+      color: #FFF;
+    }
+    --paper-collapse-item-content : {
+      border: 1px solid #CCC;
+      border-top: none;
+      padding: 15px;
+    }
+    @nest & p {
+      white-space: normal;
+    }
+  }
 }
